@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Traoùvé
 Template HTML pour site d'objets perdus en Bretagne
 
@@ -45,6 +44,5 @@ répondre à celle-ci :
 2. Fichier MWB de la base de données
 3. Diagrammes UML
 4. Code source PHP / HTML / CSS
-=======
-# traouve
->>>>>>> e21d1b4caaffdb5018f149f83de04d51e9b77e9e
+
+
