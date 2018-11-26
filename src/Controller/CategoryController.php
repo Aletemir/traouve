@@ -58,7 +58,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="category_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="category_edit", methods="GET")
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -88,6 +88,6 @@ class CategoryController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('category_index');
+        return $this->redirectToRoute('app_homepage');
     }
 }
