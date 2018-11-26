@@ -36,7 +36,7 @@ class Commentaire
     private $createdAt;
 
     /**
-     * @var \Traobject
+     * @var Traobject
      *
      * @ORM\ManyToOne(targetEntity="Traobject")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Commentaire
     private $traobject;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -54,6 +54,86 @@ class Commentaire
      * })
      */
     private $user;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return Traobject
+     */
+    public function getTraobject(): Traobject
+    {
+        return $this->traobject;
+    }
+
+    /**
+     * @param Traobject $traobject
+     */
+    public function setTraobject(Traobject $traobject): void
+    {
+        $this->traobject = $traobject;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
 
 
 }

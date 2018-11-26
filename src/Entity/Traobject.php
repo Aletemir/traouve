@@ -85,7 +85,7 @@ class Traobject
     private $updateAt;
 
     /**
-     * @var \Category
+     * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
@@ -95,7 +95,7 @@ class Traobject
     private $category;
 
     /**
-     * @var \Departement
+     * @var Departement
      *
      * @ORM\ManyToOne(targetEntity="Departement")
      * @ORM\JoinColumns({
@@ -105,7 +105,7 @@ class Traobject
     private $departement;
 
     /**
-     * @var \State
+     * @var State
      *
      * @ORM\ManyToOne(targetEntity="State")
      * @ORM\JoinColumns({
@@ -115,7 +115,7 @@ class Traobject
     private $state;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -123,6 +123,230 @@ class Traobject
      * })
      */
     private $user;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel(): string
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     */
+    public function setLabel(string $label): void
+    {
+        $this->label = $label;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param null|string $image
+     */
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVille(): string
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param string $ville
+     */
+    public function setVille(string $ville): void
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getDescritption(): ?string
+    {
+        return $this->descritption;
+    }
+
+    /**
+     * @param null|string $descritption
+     */
+    public function setDescritption(?string $descritption): void
+    {
+        $this->descritption = $descritption;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEventAt(): \DateTime
+    {
+        return $this->eventAt;
+    }
+
+    /**
+     * @param \DateTime $eventAt
+     */
+    public function setEventAt(\DateTime $eventAt): void
+    {
+        $this->eventAt = $eventAt;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateEnd(): ?\DateTime
+    {
+        return $this->dateEnd;
+    }
+
+    /**
+     * @param \DateTime|null $dateEnd
+     */
+    public function setDateEnd(?\DateTime $dateEnd): void
+    {
+        $this->dateEnd = $dateEnd;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    /**
+     * @param null|string $adress
+     */
+    public function setAdress(?string $adress): void
+    {
+        $this->adress = $adress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt(string $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getUpdateAt(): ?string
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param null|string $updateAt
+     */
+    public function setUpdateAt(?string $updateAt): void
+    {
+        $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return Departement
+     */
+    public function getDepartement(): Departement
+    {
+        return $this->departement;
+    }
+
+    /**
+     * @param Departement $departement
+     */
+    public function setDepartement(Departement $departement): void
+    {
+        $this->departement = $departement;
+    }
+
+    /**
+     * @return State
+     */
+    public function getState(): State
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param State $state
+     */
+    public function setState(State $state): void
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
 
 
 }

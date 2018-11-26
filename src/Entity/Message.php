@@ -36,7 +36,7 @@ class Message
     private $createdAt;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Message
     private $userTo;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -54,6 +54,86 @@ class Message
      * })
      */
     private $userFrom;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUserTo(): User
+    {
+        return $this->userTo;
+    }
+
+    /**
+     * @param User $userTo
+     */
+    public function setUserTo(User $userTo): void
+    {
+        $this->userTo = $userTo;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUserFrom(): User
+    {
+        return $this->userFrom;
+    }
+
+    /**
+     * @param User $userFrom
+     */
+    public function setUserFrom(User $userFrom): void
+    {
+        $this->userFrom = $userFrom;
+    }
 
 
 }
