@@ -27,7 +27,7 @@ class DepartementFixtures extends Fixture
         $finistere = new Departement();
         $finistere->setLabel('Finistère');
         $finistere->setZipcode('29');
-        $manager->persist($vilaine);
+        $manager->persist($finistere);
         $this->setReference('finistere' , $finistere);
 
         $morbihan = new Departement();
