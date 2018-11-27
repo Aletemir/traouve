@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Traoùvé</title>
+    {% block title %}Aodou an Traoùvé{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 </head>
 <body>
+{% block header %}
+
 
 <div class="fixed-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">
@@ -55,6 +60,10 @@
             </section>
         </div>
     </header>
+{% endblock %}
+
+    {% block body %}
+
 
     <div class="container">
         <h2>Les derniers objets trouvés</h2>
@@ -129,7 +138,12 @@
     </div>
 
 </main>
+    {% endblock %}
 
+
+
+{% block footer %}
+    
 <div class="container">
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
@@ -177,5 +191,6 @@
 
 <script src="main.js"></script>
 
+{% endblock %}
 </body>
 </html>
