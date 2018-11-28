@@ -12,16 +12,16 @@ class StateFixtures extends Fixture
     {
 
             $trouve= new State();
-            $trouve->setLabel('Trouvé');
+            $trouve->setLabel('trouve');
             $trouve->setColor('orange');
             $manager->persist($trouve);
             $this->setReference('state-trouve' , $trouve);
 
             $perdu= new State();
-            $perdu->setLabel('Perdu');
+            $perdu->setLabel('perdu');
             $perdu->setColor('grey');
             $manager->persist($perdu);
-            $this->setReference('state-trouve' , $perdu);
+            $this->setReference('state-perdu' , $perdu);
 
 
         $manager->flush();

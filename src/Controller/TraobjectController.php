@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Traobject;
-use App\Form\Traobject1Type;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\TraobjectType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,27 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/traobject")
  */
-class TraobjectController extends AbstractController
+class TraobjectController extends BaseController
 {
     /**
-     * @Route("/", name="traobject_index", methods="GET")
-     */
-    public function index(): Response
-    {
-        $traobjects = $this->getDoctrine()
-            ->getRepository(Traobject::class)
-            ->findAll();
-
-        return $this->render('traobject/index.html.twig', ['traobjects' => $traobjects]);
-    }
-
-    /**
-     * @Route("/new", name="traobject_new", methods="GET|POST")
+     * @Route("/create-ad", name="traobject_new_ad", methods="GET|POST")
      */
     public function new(Request $request): Response
     {
         $traobject = new Traobject();
-        $form = $this->createForm(Traobject1Type::class, $traobject);
+        $form = $this->createForm(TraobjectType::class, $traobject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -40,10 +27,10 @@ class TraobjectController extends AbstractController
             $em->persist($traobject);
             $em->flush();
 
-            return $this->redirectToRoute('traobject_index');
+            return $this->redirectToRoute('traobject_new_ad');
         }
 
-        return $this->render('traobject/new.html.twig', [
+        return $this->render('traobject/depot-annonce.html.twig', [
             'traobject' => $traobject,
             'form' => $form->createView(),
         ]);
@@ -90,4 +77,6 @@ class TraobjectController extends AbstractController
 
         return $this->redirectToRoute('traobject_index');
     }
+
+
 }

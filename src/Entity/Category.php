@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * Category
@@ -12,8 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
-    const FOUND = 'Trouvé';
-    const LOST = 'Perdu';
+
     /**
      * @var int
      *
@@ -43,6 +44,20 @@ class Category
      * @ORM\Column(name="color", type="string", length=255, nullable=false)
      */
     private $color;
+
+    /**
+     * @OneToMany(targetEntity="Traobject", mappedBy="category")
+     */
+    private $traobject;
+
+    /**
+     * Category constructor.
+     */
+    public function __construct()
+    {
+        $this->traobject = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -95,7 +110,7 @@ class Category
     /**
      * @return string
      */
-    public function getColor(): string
+    public function getColor(): ?string
     {
         return $this->color;
     }
@@ -108,5 +123,8 @@ class Category
         $this->color = $color;
     }
 
-
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 }

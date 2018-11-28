@@ -68,6 +68,35 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $animal->setEventAt(new \DateTime('2018-11-16'));
         $manager->persist($animal);
 
+        $chat = new Traobject();
+        $chat->setUser($this->getReference('user-4'));
+        $chat->setLabel('chat trouvé');
+        $chat->setState($this->getReference('state-perdu'));
+        $chat->setCategory($this->getReference('cat-animal'));
+        $chat->setImage('chat.jpg');
+        $chat->setVille('Rennes');
+        $chat->setDepartement($this->getReference('illeVilaine'));
+        $chat->setAdress('rue General Choin choin');
+        $chat->setDescritption('Trouvé un chat');
+        $chat->setCreatedAt('2018-11-27');
+        $chat->setEventAt(new \DateTime('2018-11-16'));
+        $manager->persist($chat);
+
+        $ironman = new Traobject();
+        $ironman->setUser($this->getReference('user-3'));
+        $ironman->setLabel('Retrouvé un jouet');
+        $ironman->setState($this->getReference('state-perdu'));
+        $ironman->setCategory($this->getReference('cat-jouet'));
+        $ironman->setImage('jouet2.jpg');
+        $ironman->setVille('Brest');
+        $ironman->setDepartement($this->getReference('finistere'));
+        $ironman->setAdress('Place Villejean');
+        $ironman->setDescritption('Trouvé un jouet transformers');
+        $ironman->setCreatedAt('2018-04-16');
+        $ironman->setEventAt(new \DateTime('2018-04-15'));
+        $manager->persist($ironman);
+
+
         $manager->flush();
     }
 

@@ -9,7 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="traobject", indexes={@ORM\Index(name="fk_traobject_category_idx", columns={"category_id"}), @ORM\Index(name="fk_traobject_departement1_idx", columns={"departement_id"}), @ORM\Index(name="fk_traobject_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_traobject_state1_idx", columns={"state_id"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TraobjectRepository")
  */
+
 class Traobject
 {
     /**
@@ -87,7 +89,7 @@ class Traobject
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="traobject")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
@@ -143,7 +145,7 @@ class Traobject
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -175,7 +177,7 @@ class Traobject
     /**
      * @return string
      */
-    public function getVille(): string
+    public function getVille(): ?string
     {
         return $this->ville;
     }
@@ -207,7 +209,7 @@ class Traobject
     /**
      * @return \DateTime
      */
-    public function getEventAt(): \DateTime
+    public function getEventAt(): ?\DateTime
     {
         return $this->eventAt;
     }
@@ -255,7 +257,7 @@ class Traobject
     /**
      * @return string
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -287,7 +289,7 @@ class Traobject
     /**
      * @return Category
      */
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
@@ -303,7 +305,7 @@ class Traobject
     /**
      * @return Departement
      */
-    public function getDepartement(): Departement
+    public function getDepartement(): ?Departement
     {
         return $this->departement;
     }
@@ -319,7 +321,7 @@ class Traobject
     /**
      * @return State
      */
-    public function getState(): State
+    public function getState(): ?State
     {
         return $this->state;
     }
@@ -335,7 +337,7 @@ class Traobject
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -348,5 +350,8 @@ class Traobject
         $this->user = $user;
     }
 
-
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 }

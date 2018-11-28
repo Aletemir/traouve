@@ -2,22 +2,28 @@
 
 namespace App\Controller;
 
+use App\Entity\State;
 use App\Entity\Traobject;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\TraobjectRepository;
 
-class DefaultController extends AbstractController
+/**
+ *Class DefaultController
+ * @package App/Controller
+ */
+class DefaultController extends BaseController
 {
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage(){
+    public function homepage()
+    {
+        $lost = $this->getDoctrine()->getRepository(State::class)->findOneBy(['label'=>State::LOST]);
+        $find = $this->getDoctrine()->getRepository(State::class)->findOneBy(['label'=>State::FOUND]);
+        $traobjectsLost = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState($lost, 3);
+        $traobjectsFound =$this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState($find, 3);
 
-        $traobjects = $this->getDoctrine()->getRepository(Traobject::class)->findAll();
-
-        return $this->render('default/homepage.html.twig',[
-            'traobjects' => $traobjects
-            ]);
-
+        return $this->render('default/homepage.html.twig', ['traobjectsLost' => $traobjectsLost, 'traobjectsFound' => $traobjectsFound ]);
     }
+
 }

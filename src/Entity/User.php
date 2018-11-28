@@ -228,6 +228,10 @@ class User
         $this->plainPassword = $plainPassword;
     }
 
+    public function __toString()
+    {
+        return $this->getLastname();
+    }
 
 
 }

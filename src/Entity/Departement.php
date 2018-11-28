@@ -83,5 +83,8 @@ class Departement
         $this->zipcode = $zipcode;
     }
 
-
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 }
