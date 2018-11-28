@@ -23,7 +23,10 @@ class DefaultController extends BaseController
         $traobjectsLost = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState($lost, 3);
         $traobjectsFound =$this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState($find, 3);
 
+
         return $this->render('default/homepage.html.twig', ['traobjectsLost' => $traobjectsLost, 'traobjectsFound' => $traobjectsFound ]);
     }
+
+
 
 }

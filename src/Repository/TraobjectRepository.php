@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\State;
+use App\Entity\Traobject;
 use Doctrine\ORM\EntityRepository;
 
 
@@ -25,5 +26,4 @@ class TraobjectRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
-
 }

@@ -51,6 +51,22 @@ class Category
     private $traobject;
 
     /**
+     * @return mixed
+     */
+    public function getTraobject()
+    {
+        return $this->traobject;
+    }
+
+    /**
+     * @param mixed $traobject
+     */
+    public function setTraobject($traobject): void
+    {
+        $this->traobject = $traobject;
+    }
+
+    /**
      * Category constructor.
      */
     public function __construct()

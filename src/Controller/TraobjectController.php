@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class TraobjectController extends BaseController
 {
     /**
-     * @Route("/create-ad", name="traobject_new_ad", methods="GET|POST")
+     * @Route("/create-ad-found", name="traobject_new_ad_found", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function newFound(Request $request): Response
     {
         $traobject = new Traobject();
         $form = $this->createForm(TraobjectType::class, $traobject);
@@ -30,11 +30,37 @@ class TraobjectController extends BaseController
             return $this->redirectToRoute('traobject_new_ad');
         }
 
-        return $this->render('traobject/depot-annonce.html.twig', [
+        return $this->render('traobject/annonce-perdu.html.twig', [
             'traobject' => $traobject,
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/create-ad-lost", name="traobject_new_ad_lost")
+     * @param Request $request
+     * @return Response
+     */
+    public function newLost(Request $request): Response
+    {
+        $traobject = new Traobject();
+        $form = $this->createForm(TraobjectType::class, $traobject);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($traobject);
+            $em->flush();
+
+            return $this->redirectToRoute('traobject_new_ad_found');
+        }
+
+        return $this->render('traobject/annonce-trouve.html.twig', [
+            'traobject' => $traobject,
+            'form' => $form->createView(),
+        ]);
+    }
+
 
     /**
      * @Route("/show/{id}", name="traobject_show", methods="GET")

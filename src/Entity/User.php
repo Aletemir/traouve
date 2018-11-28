@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"mail"})})
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"email"})})
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -38,9 +39,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=255, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $mail;
+    private $email;
 
     /**
      * @var string|null
@@ -125,17 +126,17 @@ class User
     /**
      * @return string
      */
-    public function getMail(): string
+    public function getEmail(): string
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**
-     * @param string $mail
+     * @param string $email
      */
-    public function setMail(string $mail): void
+    public function setEmail(string $email): void
     {
-        $this->mail = $mail;
+        $this->email = $email;
     }
 
     /**
@@ -233,5 +234,13 @@ class User
         return $this->getLastname();
     }
 
-
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
 }
