@@ -1,0 +1,97 @@
+easy_admin:
+  site_name: 'Traobject Admin'
+  design:
+    brand_color: '#EB6864'
+  formats:
+    datetime: 'd/m/Y'
+  entities:
+    Traobject:
+      class: App\Entity\Traobject
+      label: 'TraObjects'
+      list:
+        fields:
+        - { property: 'id', type: 'int'}
+        - { property: 'label', type: 'text', label: 'Titre' }
+        - { property: 'picture', type: 'image', label: 'Image' }
+        - { property: 'event_at', type: 'datetime', label: 'Date Evenement'}
+        - { property: 'ville', type: 'text', label: 'Ville'}
+        - { property: 'descritption', type: 'textarea', label: 'Description'}
+      show:
+        fields:
+        - { property: 'title', type: 'text', label: 'Titre' }
+        - { property: 'picture', type: 'image', label: 'Image' }
+        - { property: 'event_at', type: 'datetime', label: 'Date évenement' }
+        - { property: 'updated_at', type: 'datetime', label: 'Date MAJ'}
+        - { property: 'city', type: 'text', label: 'Ville'}
+        - { property: 'description', type: 'textarea', label: 'Description'}
+      form:
+        fields:
+        - { property: 'title', type: 'text' }
+        - { property: 'pictureFile', type: 'vich_image' }
+        - { property: 'event_at', type: 'datetime' }
+        - { property: 'updated_at', type: 'datetime', label: 'Date MAJ'}
+        - { property: 'city', type: 'text' }
+        - { property: 'state', type: 'text' }
+        - { property: 'description', type: 'textarea', label: 'Description'}
+    User:
+      class: App\Entity\User
+      label: 'Utilisateur'
+      list:
+        fields:
+        - { property: 'id', type: 'int'}
+        - { property: 'firstname', type: 'text', label: 'Prénom' }
+        - { property: 'lastname', type: 'text', label: 'Nom' }
+        - { property: 'email', type: 'email', label: 'Email' }
+        show:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'firstname', type: 'text', label: 'Prénom' }
+          - { property: 'lastname', type: 'text', label: 'Nom' }
+          - { property: 'email', type: 'email', label: 'Email' }
+        form:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'image', label: 'Image'}
+          - { property: 'firstname', type: 'text', label: 'Prénom' }
+          - { property: 'lastname', type: 'text', label: 'Nom' }
+          - { property: 'email', type: 'email', label: 'Email' }
+    Category:
+      class: App\Entity\Category
+      label: 'Categories'
+      list:
+        fields:
+        - { property: 'id', type: 'int'}
+        - { property: 'label', type: 'text', label: 'Libellé' }
+        - { property: 'icon', type: 'text', label: 'Icone' }
+        - { property: 'color', type: 'text', label: 'Couleur' }
+        edit:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'label', type: 'text', label: 'Libellé' }
+          - { property: 'icon', type: 'text', label: 'Icone' }
+          - { property: 'color', type: 'text', label: 'Couleur' }
+        form:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'label', type: 'text', label: 'Libellé' }
+          - { property: 'icon', type: 'text', label: 'Icone' }
+          - { property: 'color', type: 'text', label: 'Couleur' }
+    Departement:
+      class: App\Entity\Departement
+      label: 'Départements'
+      list:
+        fields:
+        - { property: 'id', type: 'int'}
+        - { property: 'label', type: 'text', label: 'Libellé' }
+        - { property: 'zipcode', type: 'bigint', label: 'CP' }
+        edit:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'label', type: 'text', label: 'Libellé' }
+          - { property: 'zipcode', type: 'bigint', label: 'CP' }
+        form:
+          fields:
+          - { property: 'id', type: 'int'}
+          - { property: 'label', type: 'text', label: 'Libellé' }
+          - { property: 'zipcode', type: 'bigint', label: 'CP' }
+
