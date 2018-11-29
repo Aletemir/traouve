@@ -87,7 +87,6 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $ironman->setLabel('Retrouvé un jouet');
         $ironman->setState($this->getReference('state-perdu'));
         $ironman->setCategory($this->getReference('cat-jouet'));
-        $ironman->setImage('jouet2.jpg');
         $ironman->setVille('Brest');
         $ironman->setDepartement($this->getReference('finistere'));
         $ironman->setAdress('Place Villejean');

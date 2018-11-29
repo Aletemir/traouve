@@ -14,22 +14,43 @@
                  objets retrouvés grâce à notre plateforme de mise en relation !</p>
              <section class="row">
                  <article class="col-md-4">
+                     {% if app.user %}
                      <a class="btn btn-primary" href="{{ path('traobject_new_ad_found') }}">
                          <i class="fa fa-plus-circle"></i>
                          <h2>Créer un avis de recherche</h2>
                      </a>
+                     {% else %}
+                         <a href="{{ path('app_login') }}" class="btn btn-primary">
+                             <i class="fa fa-plus-circle"></i>
+                             <h2>Créer un avis de recherche</h2>
+                         </a>
+                     {% endif %}
                  </article>
                  <article class="col-md-4">
+                     {% if app.user %}
                      <a class="btn btn-info" href="{{ path('traobject_new_ad_lost') }}">
                          <i class="fa fa-map-pin"></i>
                          <h2>Déclarer un objet trouvé</h2>
                      </a>
+                         {% else %}
+                     <a class="btn btn-info" href="{{ path('app_login') }}">
+                         <i class="fa fa-map-pin"></i>
+                         <h2>Déclarer un objet trouvé</h2>
+                     </a>
+                     {% endif %}
                  </article>
                  <article class="col-md-4">
+                     {% if app.user %}
                      <a class="btn btn-danger" href="form-search.html">
                          <i class="fa fa-search"></i>
                          <h2>Rechercher un objet perdu</h2>
                      </a>
+                     {% else %}
+                         <a class="btn btn-danger" href="{{ path('app_login') }}">
+                             <i class="fa fa-search"></i>
+                             <h2>Rechercher un objet perdu</h2>
+                         </a>
+                 {% endif %}
                  </article>
              </section>
          </div>

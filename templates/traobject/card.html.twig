@@ -1,16 +1,27 @@
 <div class="card object-card">
-    <span class="badge badge-primary badge-found"><i class="fa fa-map-pin"></i> {{ traobject.state }}</span>
-    <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.image) }}" alt="{{ traobject.label }}">
+    <span class="badge badge-primary {{ traobject.state.color }}">
+        <i class="fa fa-map-pin"></i> {{ traobject.state.label }}</span>
+    {% if traobject.image %}
+        <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.image) }}"
+             alt=" {{ traobject.category.label }}">
+    {% else %}
+        <div class="card-logo-top" style="background-color: {{ traobject.category.color }};">
+            <i class="fa {{ traobject.category.icon }}"></i>
+        </div>
+    {% endif %}
     <div class="card-body">
-        <h5 class="card-title">{{ traobject.label }}</h5>
+        <h5 class="card-title"> {{ traobject.label }}</h5>
         <ul class="object-features">
-
-            <li><a href="#" class="badge" style="background-color: #dc143c;"><i class="fa {{ traobject.category.icon }}"></i> {{ traobject.category.label }}</a></li>
-
-            <li><a href="#" class="badge badge-info"><i class="fa fa-calendar"></i> {{ traobject.createdAt }}</a></li>
-
-            <li><a href="#" class="badge badge-info"><i class="fa fa-map-marker"></i> {{ traobject.departement.label }}</a></li>
+            <li><a href="#" class="badge" style="background-color: {{ traobject.category.color }};"><i
+                            class="fa {{ traobject.category.icon }}"></i> {{ traobject.category.label }}
+                </a></li>
+            <li><a href="#" class="badge badge-info"><i
+                            class="fa fa-calendar"></i> {{ traobject.eventAt|date("d/m/Y") }}
+                </a></li>
+            <li><a href="#" class="badge badge-info"><i
+                            class="fa fa-map-marker"></i> {{ traobject.ville }}</a></li>
         </ul>
     </div>
-    <a href="{{ path('traobject_show', {'id': traobject.id }) }}" class="card-footer-btn btn btn-primary"><i class="fa fa-eye"></i> Afficher</a>
+    <a href="{{ path('traobject_show', {'id': traobject.id}) }}" class="card-footer-btn btn btn-primary">
+        <i class="fa fa-eye"></i>Afficher</a>
 </div>
