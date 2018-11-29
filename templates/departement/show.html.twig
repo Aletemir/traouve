@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des categories{% endblock %}
+
+{% block body %}
+    <h1>{{ departement.label }}</h1>
+
+
+    <section class="row col-md-10">
+        {% for traobject in departement.traobject %}
+            <article class="col-md-2">
+                {{ include('traobject/card.html.twig') }}
+            </article>
+        {% endfor %}
+    </section>
+
+
+
+{% endblock %}

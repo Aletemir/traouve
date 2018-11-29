@@ -99,7 +99,7 @@ class Traobject
     /**
      * @var Departement
      *
-     * @ORM\ManyToOne(targetEntity="Departement")
+     * @ORM\ManyToOne(targetEntity="Departement"), inversedBy="traobject"
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="departement_id", referencedColumnName="id")
      * })

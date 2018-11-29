@@ -15,6 +15,8 @@ class TraobjectController extends BaseController
 {
     /**
      * @Route("/create-ad-found", name="traobject_new_ad_found", methods="GET|POST")
+     * @param Request $request
+     * @return Response
      */
     public function newFound(Request $request): Response
     {
@@ -27,7 +29,7 @@ class TraobjectController extends BaseController
             $em->persist($traobject);
             $em->flush();
 
-            return $this->redirectToRoute('traobject_new_ad');
+            return $this->redirectToRoute('traobject_new_ad_found');
         }
 
         return $this->render('traobject/annonce-perdu.html.twig', [

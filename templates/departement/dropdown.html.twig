@@ -1,0 +1,9 @@
+<ul class="list-unstyled text-small">
+    {% for departement in departements %}
+        <li>
+            <a href="{{ path('departement_show', {'id': departement.id}) }}" >
+                {{ departement.label }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

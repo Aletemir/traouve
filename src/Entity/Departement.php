@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * Departement
@@ -34,6 +35,27 @@ class Departement
      * @ORM\Column(name="zipcode", type="integer", nullable=false)
      */
     private $zipcode;
+
+    /**
+     * @OneToMany(targetEntity="Traobject", mappedBy="departement")
+     */
+    private $traobject;
+
+    /**
+     * @return mixed
+     */
+    public function getTraobject()
+    {
+        return $this->traobject;
+    }
+
+    /**
+     * @param mixed $traobject
+     */
+    public function setTraobject($traobject): void
+    {
+        $this->traobject = $traobject;
+    }
 
     /**
      * @return int

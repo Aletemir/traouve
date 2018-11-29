@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h2> Voici les objets qui ont été récemment perdu</h2>
+    <section class="row w-auto">
+        {% for traobjectLost in traobjectsLost %}
+            <article class="col-md-2">
+                {% include 'traobject/card.html.twig' with {'traobject' : traobjectLost} only %}
+            </article>
+        {% endfor %}
+    </section>
+
+{% endblock %}

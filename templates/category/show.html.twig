@@ -5,15 +5,15 @@
 {% block body %}
     <h1>{{ category.label }}</h1>
 
-    <ul>
-        {% for traobject in category.traobject  %}
 
-            <li>
-                {{include('traobject/card.html.twig') }}
-            </li>
+        <section class="row col-md-10">
+            {% for traobject in category.traobject %}
+                <article class="col-md-2">
+                    {{ include('traobject/card.html.twig') }}
+                </article>
+            {% endfor %}
+        </section>
 
-        {% endfor %}
-    </ul>
 
 
 {% endblock %}

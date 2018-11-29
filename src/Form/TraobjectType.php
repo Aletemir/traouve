@@ -17,15 +17,14 @@ class TraobjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('state')
+            ->add('state', null, ['label'=>'Etat'])
             ->add('label', TextType::class, array('label' =>'Titre'))
+            ->add('category', ChoiceType::class, ['label'=>'Catégorie'])
             ->add('image', FileType::class, ['label'=>'Image'])
+            ->add('departement', ChoiceType::class, ['label' => 'Département'])
             ->add('ville', TextType::class, ['label' => 'Ville '])
             ->add('descritption', TextareaType::class, ['label' => 'Description'] )
             ->add('eventAt', DateTimeType::class, ['label'=> 'Moment de l\'événement'])
-            ->add('adress', TextType::class, ['label'=> 'Adresse'])
-            ->add('category', ChoiceType::class, ['label'=>'Catégorie'])
-            ->add('departement', ChoiceType::class, ['label' => 'Département'])
 
         ;
     }

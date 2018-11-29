@@ -52,7 +52,6 @@ class CategoryController extends BaseController
     }
 
 
-
     /**
      * @Route("/{id}", name="category_show", methods="GET")
      * @param Category $category
@@ -60,14 +59,16 @@ class CategoryController extends BaseController
      */
     public function show(Category $category): Response
     {
-        return $this->render('category/catlist.html.twig', ['category' => $category]);
+        return $this->render('category/show.html.twig', ['category' => $category]);
     }
 
 
-    public function dropdown()
-    {        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
 
-        return $this->render('category/catlist.html.twig', ['categories' => $categories]);
+    public function dropdown()
+    {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+
+        return $this->render('category/dropdown.html.twig', ['categories' => $categories]);
     }
 
 
@@ -99,7 +100,7 @@ class CategoryController extends BaseController
      */
     public function delete(Request $request, Category $category): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
@@ -107,4 +108,5 @@ class CategoryController extends BaseController
 
         return $this->redirectToRoute('category_index');
     }
+
 }
