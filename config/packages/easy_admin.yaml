@@ -1,5 +1,5 @@
 easy_admin:
-  site_name: 'Traobject Admin'
+  site_name: 'Traouve Admin                                                                                 <a class=" btn btn-green btn-lg" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Retour page principale'
   design:
     brand_color: '#EB6864'
   formats:
