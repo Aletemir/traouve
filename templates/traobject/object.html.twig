@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Traoùvé</title>
-</head>
-<body>
+{% block title %}
+    Regarder cet objet
+{% endblock %}
+
 {% block header %}
     {{ parent() }}
 {% endblock %}
@@ -19,25 +15,26 @@
             <h1 class="card-header">
                 <span class="badge badge-primary badge-found">
                     <i class="fa fa-map-pin"></i>
-                    Trouvé
+                    {{ traobject.state }}
                 </span>
-                Portefeuille retrouvé à l'arrêt de bus
+                {{ traobject.label }}
             </h1>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="uploads/wallet.jpg" class="img-thumbnail" alt="Portefeuille">
+                        <img src="{{ asset('uploads/' ~ traobject.image) }}" class="img-thumbnail" alt="{{ traobject.category }}">
                     </div>
                     <div class="col-md-8">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto cum ducimus eaque eligendi et laudantium nostrum porro possimus, provident quam quibusdam recusandae rem similique unde? Laboriosam officiis suscipit vero.</p>
+                        {{ traobject.descritption  }}
                     </div>
                 </div>
             </div>
             <footer class="card-footer">
                 <ul class="object-features">
-                    <li><a href="#" class="badge" style="background-color: #dc143c;"><i class="fa fa-money"></i> Portefeuille</a></li>
-                    <li><a href="#" class="badge badge-info"><i class="fa fa-calendar"></i> 21/11/2018</a></li>
-                    <li><a href="#" class="badge badge-info"><i class="fa fa-map-marker"></i> Rennes</a></li>
+                    <li><a href="{{ path('category_show', {'id': traobject.category.id}) }}" class="badge" style="background-color: #dc143c;"><i class="fa fa-money"></i> {{ traobject.category }}</a></li>
+                    <li><a href="#" class="badge badge-info"><i class="fa fa-calendar"></i> {{ traobject.eventAt|date('d m y') }}</a></li>
+                    <li><a href="{{ path('departement_show', {'id': traobject.departement.id}) }}" class="badge badge-info"><i class="fa fa-calendar"></i> {{ traobject.departement }}</a></li>
+                    <li><a href="#" class="badge badge-info"><i class="fa fa-map-marker"></i> {{ traobject.ville }}</a></li>
                 </ul>
             </footer>
         </div>

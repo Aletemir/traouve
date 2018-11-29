@@ -69,7 +69,7 @@ class TraobjectController extends BaseController
      */
     public function show(Traobject $traobject): Response
     {
-        return $this->render('traobject/show.html.twig', ['traobject' => $traobject]);
+        return $this->render('traobject/object.html.twig', ['traobject' => $traobject]);
     }
 
     /**
