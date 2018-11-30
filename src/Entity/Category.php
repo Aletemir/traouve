@@ -58,12 +58,12 @@ class Category
         return $this->traobject;
     }
 
-    /**
-     * @param mixed $traobject
-     */
-    public function setTraobject($traobject): void
+
+    public function setTraobject($traobject): self
     {
         $this->traobject = $traobject;
+
+        return $this;
     }
 
     /**
@@ -78,49 +78,45 @@ class Category
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
+
     }
 
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     */
-    public function setLabel(string $label): void
+    public function setLabel(string $label): self
     {
         $this->label = $label;
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getIcon(): string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
-    /**
-     * @param string $icon
-     */
-    public function setIcon(string $icon): void
+
+    public function setIcon(string $icon): self
     {
         $this->icon = $icon;
+        return $this;
     }
 
     /**
@@ -131,12 +127,11 @@ class Category
         return $this->color;
     }
 
-    /**
-     * @param string $color
-     */
-    public function setColor(string $color): void
+
+    public function setColor(string $color): self
     {
         $this->color = $color;
+        return $this;
     }
 
     public function __toString()
