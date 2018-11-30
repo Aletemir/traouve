@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Traobject;
+use App\Entity\State;
 use App\Form\TraobjectType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,18 +22,19 @@ class TraobjectController extends BaseController
     public function newFound(Request $request): Response
     {
         $traobject = new Traobject();
+        $found=$this->getDoctrine()->getRepository(State::class)->findOneBy(['label'=>State::FOUND]);
+        $traobject->setState($found);
         $form = $this->createForm(TraobjectType::class, $traobject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $traobject->setUser($this->getUser());
             $em->persist($traobject);
             $em->flush();
-
-            return $this->redirectToRoute('traobject_new_ad_found');
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('traobject/annonce-perdu.html.twig', [
+        return $this->render('traobject/annonce-trouve.html.twig', [
             'traobject' => $traobject,
             'form' => $form->createView(),
         ]);
@@ -46,23 +48,22 @@ class TraobjectController extends BaseController
     public function newLost(Request $request): Response
     {
         $traobject = new Traobject();
+        $lost=$this->getDoctrine()->getRepository(State::class)->findOneBy(['label'=>State::LOST]);
+        $traobject->setState($lost);
         $form = $this->createForm(TraobjectType::class, $traobject);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $traobject->setUser($this->getUser());
             $em->persist($traobject);
             $em->flush();
-
-            return $this->redirectToRoute('traobject_new_ad_found');
+            return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('traobject/annonce-trouve.html.twig', [
+        return $this->render('traobject/annonce-perdu.html.twig', [
             'traobject' => $traobject,
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/show/{id}", name="traobject_show", methods="GET")

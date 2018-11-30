@@ -29,7 +29,7 @@ class CategoryFixtures extends Fixture
         $jouet = new Category();
         $jouet->setLabel('Jouet');
         $jouet->setIcon('fa-gamepad');
-        $jouet->setColor('yellow');
+        $jouet->setColor('goldenrod');
         $manager->persist($jouet);
         $this->addReference('cat-jouet', $jouet);
 

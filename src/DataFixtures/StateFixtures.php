@@ -13,13 +13,13 @@ class StateFixtures extends Fixture
 
             $trouve= new State();
             $trouve->setLabel('trouve');
-            $trouve->setColor('orange');
+            $trouve->setColor('badge-found');
             $manager->persist($trouve);
             $this->setReference('state-trouve' , $trouve);
 
             $perdu= new State();
             $perdu->setLabel('perdu');
-            $perdu->setColor('grey');
+            $perdu->setColor('badge-lost');
             $manager->persist($perdu);
             $this->setReference('state-perdu' , $perdu);
 

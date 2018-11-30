@@ -17,7 +17,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $portefeuille->setLabel('Portefeuille trouvé');
         $portefeuille->setState($this->getReference('state-trouve'));
         $portefeuille->setCategory($this->getReference('cat-portefeuille'));
-        $portefeuille->setImage('wallet.jpg');
+        $portefeuille->setimage('wallet.jpg');
         $portefeuille->setVille('Saint Brieuc');
         $portefeuille->setDepartement($this->getReference('coteArmor'));
         $portefeuille->setAdress('rue Veaugirard');
@@ -31,7 +31,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $cle->setLabel('Trousseau clé trouvé');
         $cle->setState($this->getReference('state-trouve'));
         $cle->setCategory($this->getReference('cat-cle'));
-        $cle->setImage('key.jpg');
+        $cle->setimage('key.jpg');
         $cle->setVille('Vannes');
         $cle->setDepartement($this->getReference('morbihan'));
         $cle->setAdress('rue Saint Malo');
@@ -45,7 +45,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $jouet->setLabel('Retrouvé un jouet');
         $jouet->setState($this->getReference('state-trouve'));
         $jouet->setCategory($this->getReference('cat-jouet'));
-        $jouet->setImage('toy.jpg');
+        $jouet->setimage('toy.jpg');
         $jouet->setVille('Brest');
         $jouet->setDepartement($this->getReference('finistere'));
         $jouet->setAdress('Place Villejean');
@@ -59,7 +59,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $animal->setLabel('Chien trouvé');
         $animal->setState($this->getReference('state-trouve'));
         $animal->setCategory($this->getReference('cat-animal'));
-        $animal->setImage('chien.jpg');
+        $animal->setimage('chien.jpg');
         $animal->setVille('Rennes');
         $animal->setDepartement($this->getReference('illeVilaine'));
         $animal->setAdress('rue General Choin choin');
@@ -73,7 +73,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $chat->setLabel('chat trouvé');
         $chat->setState($this->getReference('state-perdu'));
         $chat->setCategory($this->getReference('cat-animal'));
-        $chat->setImage('chat.jpg');
+        $chat->setimage('chat.jpg');
         $chat->setVille('Rennes');
         $chat->setDepartement($this->getReference('illeVilaine'));
         $chat->setAdress('rue General Choin choin');

@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Traobject
  *
  * @ORM\Table(name="traobject", indexes={@ORM\Index(name="fk_traobject_category_idx", columns={"category_id"}), @ORM\Index(name="fk_traobject_departement1_idx", columns={"departement_id"}), @ORM\Index(name="fk_traobject_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_traobject_state1_idx", columns={"state_id"})})
- * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\TraobjectRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable()
  */
 
 class Traobject
@@ -33,9 +37,16 @@ class Traobject
     /**
      * @var string|null
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
-    private $image;
+    private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="traobject_image", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
+
 
     /**
      * @var string
@@ -52,14 +63,14 @@ class Traobject
     private $descritption;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      *
      * @ORM\Column(name="event_at", type="datetime", nullable=false)
      */
     private $eventAt;
 
     /**
-     * @var \DateTime|null
+     * @var \DateTimeInterface|null
      *
      * @ORM\Column(name="date_end", type="datetime", nullable=true)
      */
@@ -73,16 +84,16 @@ class Traobject
     private $adress;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="string", length=255, nullable=false)
+     * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="update_at", type="string", length=255, nullable=true)
+     * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
      */
     private $updateAt;
 
@@ -98,7 +109,6 @@ class Traobject
 
     /**
      * @var Departement
-     *
      * @ORM\ManyToOne(targetEntity="Departement", inversedBy="traobject")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="departement_id", referencedColumnName="id")
@@ -129,65 +139,72 @@ class Traobject
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
     public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     */
-    public function setLabel(string $label): void
+    public function setLabel(string $label): self
     {
         $this->label = $label;
+
+        return $this;
     }
 
     /**
      * @return null|string
      */
-    public function getImage(): ?string
+    public function getpicture(): ?string
     {
-        return $this->image;
+        return $this->picture;
     }
 
     /**
-     * @param null|string $image
+     * @param null|string $picture
+     * @return Traobject
      */
-    public function setImage(?string $image): void
+    public function setpicture(?string $picture): Traobject
     {
-        $this->image = $image;
+        $this->picture = $picture;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * @return null|File
      */
+    public function getpictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param File|null $picture
+     */
+    public function setpictureFile(File $picture = null)
+    {
+        $this->pictureFile = $picture;
+
+        if ($picture) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
     public function getVille(): ?string
     {
         return $this->ville;
     }
 
-    /**
-     * @param string $ville
-     */
-    public function setVille(string $ville): void
+    public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
     }
 
     /**
@@ -198,44 +215,41 @@ class Traobject
         return $this->descritption;
     }
 
-    /**
-     * @param null|string $descritption
-     */
-    public function setDescritption(?string $descritption): void
+    public function setDescritption(?string $descritption): self
     {
         $this->descritption = $descritption;
+
+        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getEventAt(): ?\DateTime
+    public function getEventAt(): ?\DateTimeInterface
     {
         return $this->eventAt;
     }
 
-    /**
-     * @param \DateTime $eventAt
-     */
-    public function setEventAt(\DateTime $eventAt): void
+
+    public function setEventAt(\DateTimeInterface $eventAt): self
     {
         $this->eventAt = $eventAt;
+
+        return $this;
     }
 
     /**
      * @return \DateTime|null
      */
-    public function getDateEnd(): ?\DateTime
+    public function getDateEnd(): ?\DateTimeInterface
     {
         return $this->dateEnd;
     }
 
-    /**
-     * @param \DateTime|null $dateEnd
-     */
-    public function setDateEnd(?\DateTime $dateEnd): void
+    public function setDateEnd(?\DateTimeInterface $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
+        return $this;
     }
 
     /**
@@ -246,28 +260,28 @@ class Traobject
         return $this->adress;
     }
 
-    /**
-     * @param null|string $adress
-     */
-    public function setAdress(?string $adress): void
+
+    public function setAdress(?string $adress): self
     {
         $this->adress = $adress;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param string $createdAt
-     */
-    public function setCreatedAt(string $createdAt): void
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
     /**
@@ -278,12 +292,11 @@ class Traobject
         return $this->updateAt;
     }
 
-    /**
-     * @param null|string $updateAt
-     */
-    public function setUpdateAt(?string $updateAt): void
+    public function setUpdateAt(?string $updateAt): self
     {
         $this->updateAt = $updateAt;
+
+        return $this;
     }
 
     /**
@@ -294,12 +307,11 @@ class Traobject
         return $this->category;
     }
 
-    /**
-     * @param Category $category
-     */
-    public function setCategory(Category $category): void
+
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
+        return $this;
     }
 
     /**
@@ -310,12 +322,10 @@ class Traobject
         return $this->departement;
     }
 
-    /**
-     * @param Departement $departement
-     */
-    public function setDepartement(Departement $departement): void
+    public function setDepartement(?Departement $departement): self
     {
         $this->departement = $departement;
+        return $this;
     }
 
     /**
@@ -326,12 +336,11 @@ class Traobject
         return $this->state;
     }
 
-    /**
-     * @param State $state
-     */
-    public function setState(State $state): void
+    public function setState(?State $state): self
     {
         $this->state = $state;
+        return $this;
+
     }
 
     /**
@@ -342,16 +351,32 @@ class Traobject
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user): void
+    public function setUser(User $user): self
     {
         $this->user = $user;
+        return $this;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime());
+    }
+
 
     public function __toString()
     {
         return $this->getLabel();
     }
+
 }
