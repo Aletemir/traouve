@@ -60,49 +60,46 @@ class Departement
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     */
-    public function setLabel(string $label): void
+    public function setLabel(string $label): self
     {
         $this->label = $label;
+
+        return $this;
     }
 
     /**
      * @return int
      */
-    public function getZipcode(): int
+    public function getZipcode(): ?int
     {
         return $this->zipcode;
     }
 
-    /**
-     * @param int $zipcode
-     */
-    public function setZipcode(int $zipcode): void
+    public function setZipcode(int $zipcode): self
     {
         $this->zipcode = $zipcode;
+
+        return $this;
     }
 
     public function __toString()

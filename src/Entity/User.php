@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * User
- *
+ * @Vich\Uploadable()
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"email"})})
  * @ORM\Entity
  */
@@ -58,6 +60,12 @@ class User implements UserInterface
     private $picture;
 
     /**
+     * @Vich\UploadableField(mapping="user_image", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -78,17 +86,17 @@ class User implements UserInterface
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -99,12 +107,11 @@ class User implements UserInterface
         return $this->lastname;
     }
 
-    /**
-     * @param string $lastname
-     */
-    public function setLastname(string $lastname): void
+    public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
     }
 
     /**
@@ -115,12 +122,11 @@ class User implements UserInterface
         return $this->firstname;
     }
 
-    /**
-     * @param string $firstname
-     */
-    public function setFirstname(string $firstname): void
+    public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+
+        return $this;
     }
 
     /**
@@ -131,12 +137,11 @@ class User implements UserInterface
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -147,12 +152,11 @@ class User implements UserInterface
         return $this->phone;
     }
 
-    /**
-     * @param null|string $phone
-     */
-    public function setPhone(?string $phone): void
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
     }
 
     /**
@@ -163,13 +167,34 @@ class User implements UserInterface
         return $this->picture;
     }
 
-    /**
-     * @param null|string $picture
-     */
-    public function setPicture(?string $picture): void
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
     }
+
+    /**
+     * @return null|File
+     */
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+
+    /**
+     * @param null|File $pictureFile
+     * @return User
+     */
+    public function setPictureFile(?File $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+
+
 
     /**
      * @see UserInterface
@@ -238,6 +263,7 @@ class User implements UserInterface
     {
         return $this->getLastname();
     }
+
 
     /**
      * Returns the username used to authenticate the user.
