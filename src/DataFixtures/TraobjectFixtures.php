@@ -6,6 +6,7 @@ use App\Entity\Traobject;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Validator\Constraints\Date;
 
 class TraobjectFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -17,12 +18,12 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $portefeuille->setLabel('Portefeuille trouvé');
         $portefeuille->setState($this->getReference('state-trouve'));
         $portefeuille->setCategory($this->getReference('cat-portefeuille'));
-        $portefeuille->setimage('wallet.jpg');
+        $portefeuille->setpicture('wallet.jpg');
         $portefeuille->setVille('Saint Brieuc');
         $portefeuille->setDepartement($this->getReference('coteArmor'));
         $portefeuille->setAdress('rue Veaugirard');
         $portefeuille->setDescritption('Trouvé portefeuille noir avec plein de billet dedans, près de la station de métro à coté du cinéma');
-        $portefeuille->setCreatedAt('2018-06-25');
+        $portefeuille->setCreatedAt(new \DateTime('20-02-2018'));
         $portefeuille->setEventAt(new \DateTime('2018-05-20'));
         $manager->persist($portefeuille);
 
@@ -31,12 +32,12 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $cle->setLabel('Trousseau clé trouvé');
         $cle->setState($this->getReference('state-trouve'));
         $cle->setCategory($this->getReference('cat-cle'));
-        $cle->setimage('key.jpg');
+        $cle->setpicture('key.jpg');
         $cle->setVille('Vannes');
         $cle->setDepartement($this->getReference('morbihan'));
         $cle->setAdress('rue Saint Malo');
         $cle->setDescritption('Perdu trousseau de clés');
-        $cle->setCreatedAt('2018-07-29');
+        $cle->setCreatedAt(new \DateTime('2018-07-28'));
         $cle->setEventAt(new \DateTime('2018-07-28'));
         $manager->persist($cle);
 
@@ -45,12 +46,12 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $jouet->setLabel('Retrouvé un jouet');
         $jouet->setState($this->getReference('state-trouve'));
         $jouet->setCategory($this->getReference('cat-jouet'));
-        $jouet->setimage('toy.jpg');
+        $jouet->setpicture('toy.jpg');
         $jouet->setVille('Brest');
         $jouet->setDepartement($this->getReference('finistere'));
         $jouet->setAdress('Place Villejean');
         $jouet->setDescritption('Trouvé un jouet transformers');
-        $jouet->setCreatedAt('2018-04-16');
+        $jouet->setCreatedAt(new \DateTime('2018-04-16'));
         $jouet->setEventAt(new \DateTime('2018-04-15'));
         $manager->persist($jouet);
 
@@ -59,12 +60,12 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $animal->setLabel('Chien trouvé');
         $animal->setState($this->getReference('state-trouve'));
         $animal->setCategory($this->getReference('cat-animal'));
-        $animal->setimage('chien.jpg');
+        $animal->setpicture('chien.jpg');
         $animal->setVille('Rennes');
         $animal->setDepartement($this->getReference('illeVilaine'));
         $animal->setAdress('rue General Choin choin');
         $animal->setDescritption('Trouvé un chien');
-        $animal->setCreatedAt('2018-11-27');
+        $animal->setCreatedAt(new \DateTime('2018-11-27'));
         $animal->setEventAt(new \DateTime('2018-11-16'));
         $manager->persist($animal);
 
@@ -73,12 +74,12 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $chat->setLabel('chat trouvé');
         $chat->setState($this->getReference('state-perdu'));
         $chat->setCategory($this->getReference('cat-animal'));
-        $chat->setimage('chat.jpg');
+        $chat->setpicture('chat.jpg');
         $chat->setVille('Rennes');
         $chat->setDepartement($this->getReference('illeVilaine'));
         $chat->setAdress('rue General Choin choin');
         $chat->setDescritption('Trouvé un chat');
-        $chat->setCreatedAt('2018-11-27');
+        $chat->setCreatedAt(new \DateTime('2018-11-27'));
         $chat->setEventAt(new \DateTime('2018-11-16'));
         $manager->persist($chat);
 
@@ -91,7 +92,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $ironman->setDepartement($this->getReference('finistere'));
         $ironman->setAdress('Place Villejean');
         $ironman->setDescritption('Trouvé un jouet transformers');
-        $ironman->setCreatedAt('2018-04-16');
+        $ironman->setCreatedAt(new \DateTime('2018-04-16'));
         $ironman->setEventAt(new \DateTime('2018-04-15'));
         $manager->persist($ironman);
 

@@ -17,22 +17,22 @@ easy_admin:
                     - { property: 'descritption', type: 'textarea', label: 'Description'}
             show:
                 fields:
-                    - { property: 'title', type: 'text', label: 'Titre' }
+                    - { property: 'label', type: 'text', label: 'Titre' }
                     - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%', label: 'Image' }
                     - { property: 'event_at', type: 'datetime', label: 'Date évenement' }
-                    - { property: 'updated_at', type: 'datetime', label: 'Date MAJ'}
+                    - { property: 'update_at', type: 'datetime', label: 'Date MAJ'}
                     - { property: 'city', type: 'text', label: 'Ville'}
-                    - { property: 'description', type: 'textarea', label: 'Description'}
+                    - { property: 'descritption', type: 'textarea', label: 'Description'}
             form:
                 title: 'Ajouter un objet'
                 fields:
-                    - { property: 'title', type: 'text' }
-                    - { property: 'pictureFile', type: 'vich_image' }
-                    - { property: 'event_at', type: 'datetime' }
-                    - { property: 'updated_at', type: 'datetime', label: 'Date MAJ'}
-                    - { property: 'city', type: 'text' }
-                    - { property: 'state', type: 'text' }
-                    - { property: 'description', type: 'textarea', label: 'Description'}
+                    - { property: 'label', type: 'text', label: 'Titre' }
+                    - { property: 'pictureFile', type: 'vich_image', label: 'Image' }
+                    - { property: 'eventAt', type: 'datetime', label: 'Date de l''evenement' }
+                    - { property: 'update_at', type: 'datetime', label: 'Date MAJ'}
+                    - { property: 'ville', type: 'text', label: 'Ville' }
+                    - { property: 'state', type: 'text', label: 'Etat' }
+                    - { property: 'descritption', type: 'textarea', label: 'Description'}
         User:
             class: App\Entity\User
             label: 'Utilisateur'
