@@ -30,15 +30,15 @@
         </nav>
         {% if app.user %}
             {% if is_granted('ROLE_ADMIN') %}
-            <a class="btn btn-outline-primary" href="{{ path('admin') }}">Administration</a>
+            <a class="btn btn-outline-primary m-1" href="{{ path('admin') }}">Administration</a>
             {% endif %}
-            <a class="btn btn-outline-primary" href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i>Se déconnecter</a>
+            <a class="btn btn-outline-primary" href="{{ path('app_logout') }}"><i class="fa fa-sign-out m-1"></i>Se déconnecter</a>
         {% else %}
-            <a class="btn btn-outline-primary" href="{{ path('app_login') }}">
+            <a class="btn btn-outline-primary m-1" href="{{ path('app_login') }}">
                 <i class="fa fa-sign-in"></i>
                 Se connecter
             </a>
-            <a class="btn btn-outline-primary" href="{{ path('user_registration') }}">
+            <a class="btn btn-outline-primary m-1" href="{{ path('user_registration') }}">
                 <i class="fa fa-user-plus"></i>
                 Créer un compte
             </a>
