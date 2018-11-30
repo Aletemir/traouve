@@ -18,6 +18,7 @@ class TraobjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('state', null,['label' => 'Etat'])
             ->add('label', TextType::class, array('label' => 'Titre'))
             ->add('descritption', TextareaType::class, array('label' => 'Description'))
             ->add('pictureFile', VichImageType::class, ['label'=>'Image', 'required'=>false ])
